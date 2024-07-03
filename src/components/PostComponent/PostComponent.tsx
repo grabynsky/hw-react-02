@@ -1,19 +1,17 @@
 import React, { FC } from 'react';
 import { IPost } from '../../models/IPost';
+import styles from'./PostComponent.module.css'
 
-// @ts-ignore
-const PostComponent: FC<IPost> = ({post}) => {
-    const {
-        id,
-        title,
-        likes,
-        dislikes
-    } = post;
+const PostComponent: FC<IPost> = ({
+                                      id,
+                                      title,
+                                      reactions
+}) => {
 
     return (
         <>
-            <div>
-                {id}- {title} - {likes} - {dislikes}
+            <div className={styles.post}>
+                {id}- {title} - {reactions.likes} - {reactions.dislikes}
             </div>
         </>
     );

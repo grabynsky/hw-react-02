@@ -22,7 +22,6 @@ const getPostsUser = async (id: number) :Promise<IPost[]>=> {
     let axiosResponse = await axiosInstance.get('/users/' + id + '/posts');
     let posts: IPost[] = axiosResponse.data.posts;
     return posts;
-
 }
 
 export {

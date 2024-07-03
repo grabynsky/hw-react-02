@@ -4,6 +4,7 @@ import {IUser} from "../../models/IUser";
 import {getPostsUser, getUsers} from "../../services/api-services";
 import PostsComponent from '../PostsComponent/PostsComponent';
 import { IPost } from '../../models/IPost';
+import styles from './UsersComponent.module.css';
 
 const UsersComponent: FC = () => {
 
@@ -18,13 +19,18 @@ const UsersComponent: FC = () => {
     const getPost = (id:number) => {
         getPostsUser(id)
             .then(response => {
-                // console.log(response);
                 setPosts(response);
             })
     }
 
     return (
-        <>
+        <div>
+            <div>
+                {
+                    posts.length ? <PostsComponent posts={posts}/> : <div className={styles.notPost}>User haven't posts</div>
+                }
+            </div>
+
             <div>
                 {
                     users.map(({
@@ -45,16 +51,10 @@ const UsersComponent: FC = () => {
                             getPost={getPost}
                         />
                     )}
-                <div>
-                    {
-                        posts.length ? <PostsComponent posts={posts}/> : <div>User haven't posts</div>
-                    }
-                </div>
+
+
             </div>
-
-
-        </>
-
+        </div>
     );
 };
 
