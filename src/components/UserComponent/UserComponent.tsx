@@ -3,7 +3,7 @@ import {IUser} from "../../models/IUser";
 
 import styles from './UserComponent.module.css';
 
-type UserComponentType<T> = T & { postsHandler: (id:number)=>void }
+type UserComponentType<T> = T & { getPost: (id:number)=>void }
 
 const UserComponent: FC<UserComponentType<IUser>> = ({
                                         id,
@@ -12,7 +12,7 @@ const UserComponent: FC<UserComponentType<IUser>> = ({
                                         email,
                                         age,
                                         image,
-                                        postsHandler
+                                        getPost
                                   }) => {
 
     return (
@@ -29,7 +29,7 @@ const UserComponent: FC<UserComponentType<IUser>> = ({
             <button
                 className={styles.btnPost}
                 onClick = {()=>{
-                postsHandler(id)
+                    getPost(id)
             }}>Posts</button>
 
         </div>
